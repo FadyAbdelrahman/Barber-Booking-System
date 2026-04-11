@@ -1,52 +1,26 @@
-const sql = require('mssql');
+const mysql = require('mysql2/promise');
+require('dotenv').config();
 
-const config = {
-  server: 'localhost',
-  port: 1433,
-  database: 'barber_booking_system1',
-  user: 'barber_admin',
-  password: 'Barber@2026!',
-  options: {
-    encrypt: false,
-    trustServerCertificate: true,
-    enableArithAbort: true,
-    instanceName: 'SQLEXPRESS'
-  },
-  connectionTimeout: 60000,
-  requestTimeout: 60000
-};
+const pool = mysql.createPool({
+  host:     process.env.DB_HOST     || 'localhost',
+  port:     process.env.DB_PORT     || 3306,
+  database: process.env.DB_NAME     || 'barber_booking',
+  user:     process.env.DB_USER     || 'root',
+  password: process.env.DB_PASSWORD || '',
+  waitForConnections: true,
+  connectionLimit:    10,
+  queueLimit:         0,
+});
 
-console.log('🔧 Connecting to SQL Server...');
-console.log('   Server: localhost:1433');
-console.log('   Database:', config.database);
-console.log('   User:', config.user);
-console.log('   Auth: SQL Authentication');
-
-const poolPromise = new sql.ConnectionPool(config)
-  .connect()
-  .then(pool => {
-    console.log('\nSUCCESS! DATABASE CONNECTED!\n');
-    return pool;
-  })
-  .catch(err => {
-    console.error('\nConnection Failed!');
-    console.error('Error:', err.message);
-    process.exit(1);
-  });
+console.log('🔧 Connecting to MySQL...');
+console.log('   Host:', process.env.DB_HOST || 'localhost');
+console.log('   Database:', process.env.DB_NAME || 'barber_booking');
+console.log('   User:', process.env.DB_USER || 'root');
 
 const testConnection = async () => {
-  try {
-    const pool = await poolPromise;
-    const result = await pool.request().query('SELECT COUNT(*) as count FROM users');
-    console.log(`Test Success - Users in database: ${result.recordset[0].count}\n`);
-  } catch (error) {
-    console.error('Test failed:', error.message);
-    throw error;
-  }
+  const [rows] = await pool.query('SELECT COUNT(*) as count FROM users');
+  console.log(`\nSUCCESS! DATABASE CONNECTED!`);
+  console.log(`Users in database: ${rows[0].count}\n`);
 };
 
-module.exports = { 
-  sql, 
-  poolPromise, 
-  testConnection 
-};
+module.exports = { pool, testConnection };

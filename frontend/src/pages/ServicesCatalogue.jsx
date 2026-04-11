@@ -27,7 +27,7 @@ import ImgCombo from "../assets/brand/sharp-society-assets/images/hair and beard
 const MotionBox = motion(Box);
 
 /* ─── EXPANDING CARD (reusable) ─────────────────────────────────────── */
-function ExpandCard({ img, bgColor, kicker, title, body, isActive, onClick, children }) {
+function ExpandCard({ img, bgColor, kicker, title, body, isActive, onClick, children, icon }) {
   return (
     <Box
       onClick={onClick}
@@ -85,26 +85,41 @@ function ExpandCard({ img, bgColor, kicker, title, body, isActive, onClick, chil
           justifyContent: "space-between",
         }}
       >
-        {/* collapsed label (vertical text) */}
-        <Typography
+        {/* collapsed: icon + vertical label */}
+        <Box
           sx={{
-            fontFamily: "Playfair Display, serif",
-            fontWeight: 800,
-            fontSize: { xs: "0.75rem", md: "0.88rem" },
-            color: "#C7A86B",
-            writingMode: "vertical-rl",
-            textOrientation: "mixed",
-            transform: "rotate(180deg)",
-            letterSpacing: "0.18em",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 1.5,
             opacity: isActive ? 0 : 1,
-            maxHeight: isActive ? 0 : 200,
-            overflow: "hidden",
-            transition: "opacity .3s ease, max-height .4s ease",
-            textShadow: "0 1px 4px rgba(0,0,0,0.8)",
+            transition: "opacity .3s ease",
+            pointerEvents: isActive ? "none" : "auto",
           }}
         >
-          {kicker}
-        </Typography>
+          {/* emoji icon */}
+          <Typography sx={{ fontSize: { xs: "1.3rem", md: "1.6rem" }, lineHeight: 1, userSelect: "none" }}>
+            {icon}
+          </Typography>
+
+          {/* vertical service name */}
+          <Typography
+            sx={{
+              fontFamily: "Playfair Display, serif",
+              fontWeight: 800,
+              fontSize: { xs: "0.75rem", md: "0.88rem" },
+              color: "#C7A86B",
+              writingMode: "vertical-rl",
+              textOrientation: "mixed",
+              transform: "rotate(180deg)",
+              letterSpacing: "0.18em",
+              overflow: "hidden",
+              textShadow: "0 1px 4px rgba(0,0,0,0.8)",
+            }}
+          >
+            {kicker}
+          </Typography>
+        </Box>
 
         {/* expanded content */}
         <Box
@@ -181,6 +196,19 @@ function ExpandCard({ img, bgColor, kicker, title, body, isActive, onClick, chil
       </Box>
     </Box>
   );
+}
+
+/* ─── SERVICE ICON MAP ───────────────────────────────────────────────── */
+function getServiceIcon(name = "") {
+  const n = name.toLowerCase();
+  if (n.includes("deluxe") || n.includes("package"))  return "⭐";
+  if (n.includes("colour") || n.includes("color"))    return "🎨";
+  if (n.includes("kids")   || n.includes("child"))    return "👦";
+  if (n.includes("shave")  || n.includes("towel"))    return "🪒";
+  if (n.includes("buzz"))                             return "⚡";
+  if (n.includes("combo")  || n.includes("&"))        return "💈";
+  if (n.includes("beard"))                            return "🧔";
+  return "✂️";
 }
 
 /* ─── SERVICE BG COLOURS (when no image) ────────────────────────────── */
@@ -315,11 +343,12 @@ export default function ServicesCatalogue() {
                   key={svc.id}
                   img={catImg[svc.category] || null}
                   bgColor={SVC_COLORS[idx % SVC_COLORS.length]}
-                  kicker={svc.category || "SERVICE"}
+                  kicker={svc.name}
                   title={svc.name}
                   body={svc.description}
                   isActive={svcActive === idx}
                   onClick={() => setSvcActive(idx)}
+                  icon={getServiceIcon(svc.name)}
                 >
                   {/* price + duration row */}
                   <Box sx={{ display: "flex", gap: 3, mb: 2 }}>

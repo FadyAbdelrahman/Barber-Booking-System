@@ -4,7 +4,7 @@ import { GlobalStyles } from "@mui/material";
 const theme = createTheme({
   palette: {
     mode: "dark",
-    background: { default: "#0B0B0C", paper: "#111113" },
+    background: { default: "#1A1614", paper: "#231E1B" },
     primary: { main: "#E7E0D6" },
     secondary: { main: "#C7A86B" },
     text: { primary: "#E7E0D6", secondary: "rgba(231,224,214,0.72)" },
@@ -53,9 +53,9 @@ export function ThemeProvider({ children }) {
           ":root": { colorScheme: "dark" },
           body: {
             background:
-              "radial-gradient(900px 500px at 20% 10%, rgba(199,168,107,0.10), transparent 60%)," +
-              "radial-gradient(700px 400px at 80% 0%, rgba(231,224,214,0.06), transparent 55%)," +
-              "#0B0B0C",
+              "radial-gradient(900px 500px at 20% 10%, rgba(199,168,107,0.12), transparent 60%)," +
+              "radial-gradient(700px 400px at 80% 0%, rgba(231,224,214,0.07), transparent 55%)," +
+              "#1A1614",
           },
           a: { color: "inherit" },
         }}
