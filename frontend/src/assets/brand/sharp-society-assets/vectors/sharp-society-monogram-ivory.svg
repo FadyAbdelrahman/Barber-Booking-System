@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>Sharp Society Monogram</title>
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Rings -->
+  <circle cx="256" cy="256" r="226" fill="none" stroke="#F2E6D0" stroke-width="14"/>
+  <circle cx="256" cy="256" r="206" fill="none" stroke="#F2E6D0" stroke-width="4" opacity="0.9"/>
+
+  <!-- Subtle inner guide lines (optional) -->
+  <path d="M120 256h82" stroke="#F2E6D0" stroke-width="4" stroke-linecap="round" opacity="0.25"/>
+  <path d="M310 256h82" stroke="#F2E6D0" stroke-width="4" stroke-linecap="round" opacity="0.25"/>
+
+  <!-- Ornamental S -->
+  <path filter="url(#softShadow)"
+        fill="#F2E6D0"
+        d="M342 120
+           C320 92 280 84 248 92
+           C214 100 192 126 194 154
+           C196 182 224 198 262 208
+           C310 220 352 242 352 292
+           C352 350 296 394 230 396
+           C178 398 138 380 120 354
+           C112 342 116 328 130 322
+           C144 316 158 324 166 336
+           C178 356 206 366 232 364
+           C276 362 306 336 304 300
+           C302 270 270 256 232 246
+           C182 234 146 210 146 164
+           C146 114 198 76 260 76
+           C300 76 334 90 354 114
+           C364 126 360 142 346 150
+           C332 158 318 150 342 120
+           Z"/>
+
+  <!-- Blade (straight razor vibe, simplified) -->
+  <path filter="url(#softShadow)"
+        fill="#F2E6D0"
+        d="M208 312
+           C238 294 270 284 306 282
+           C330 280 354 284 372 292
+           C380 296 380 308 372 312
+           C330 334 290 350 248 356
+           C232 358 218 356 206 350
+           C196 346 198 318 208 312
+           Z"/>
+
+  <!-- Blade edge highlight -->
+  <path fill="#FFFFFF" opacity="0.25"
+        d="M220 322
+           C248 306 276 298 306 296
+           C328 294 346 296 360 302
+           C334 318 300 334 258 344
+           C244 346 232 344 224 340
+           Z"/>
+</svg>

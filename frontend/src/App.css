@@ -1,0 +1,355 @@
+/* ===== Sharp Society Home (Hero.jsx) ===== */
+
+.ss-home {
+  width: 100%;
+  background: #0b0b0c;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Full-bleed hero */
+.ss-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 72px); /* adjust if your top nav height differs */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* important: stops tiling */
+  overflow: hidden;
+}
+
+.ss-heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 70% at 50% 45%, rgba(0,0,0,0.25), rgba(0,0,0,0.78) 70%),
+    linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.65));
+  pointer-events: none;
+}
+
+.ss-heroInner {
+  position: relative;
+  z-index: 1;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 24px 80px;
+  text-align: center;
+}
+
+.ss-heroLogo {
+  width: min(900px, 82vw);
+  height: auto;
+  user-select: none;
+}
+
+.ss-heroSubtitle {
+  margin-top: 18px;
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.72);
+}
+
+.ss-heroActions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ss-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, opacity 160ms ease;
+}
+
+.ss-btn:active {
+  transform: translateY(1px);
+}
+
+.ss-btnPrimary {
+  background: #c7a86b;
+  color: #0b0b0c;
+  border: 1px solid transparent;
+}
+
+.ss-btnGhost {
+  background: rgba(0,0,0,0.35);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(199,168,107,0.55);
+}
+
+.ss-btnGhost:hover {
+  border-color: rgba(199,168,107,0.9);
+}
+
+.ss-heroFooterLabel {
+  margin-top: 22px;
+  letter-spacing: 6px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.ss-scrollBtn {
+  margin-top: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.35);
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+}
+
+.ss-scrollChevron {
+  display: inline-block;
+  transform: translateY(-1px);
+  font-size: 18px;
+}
+
+/* Middle “Benicky-style” panel */
+.ss-middle {
+  width: 100%;
+  background: #2f3741;
+  color: rgba(255,255,255,0.9);
+  padding: 84px 24px;
+}
+
+.ss-middleInner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.ss-openLine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.ss-openLine.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ss-openText {
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(199,168,107,0.95);
+}
+
+.ss-openIcons {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  color: rgba(199,168,107,0.95);
+}
+
+.ss-openDot {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(199,168,107,0.85);
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(199,168,107,0.35),
+      rgba(199,168,107,0.35) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  opacity: 0.9;
+}
+
+.ss-openArrow {
+  font-size: 20px;
+  opacity: 0.85;
+}
+
+.ss-middleGrid {
+  margin-top: 52px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.ss-kicker {
+  font-size: 12px;
+  letter-spacing: 6px;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.ss-middleTitle {
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 58px);
+  line-height: 1.05;
+  color: rgba(255,255,255,0.92);
+}
+
+.ss-quote {
+  margin: 0 0 18px;
+  font-style: italic;
+  color: rgba(199,168,107,0.9);
+}
+
+.ss-middleCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.78);
+}
+
+.ss-middleCTA {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ss-middleHint {
+  font-style: italic;
+  color: rgba(199,168,107,0.85);
+  font-size: 13px;
+}
+
+/* Purveyors / value props section */
+.ss-props {
+  padding: 76px 24px;
+}
+
+.ss-propsInner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.ss-propsTitle {
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.05;
+  color: rgba(255,255,255,0.92);
+}
+
+.ss-propsDesc {
+  margin-top: 14px;
+  max-width: 760px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.72);
+}
+
+.ss-propsStats {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+}
+
+.ss-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ss-statIcon {
+  opacity: 0.9;
+}
+
+.ss-cards {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.ss-card {
+  position: relative;
+  border-radius: 26px;
+  min-height: 170px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.ss-cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.25));
+}
+
+.ss-cardInner {
+  position: relative;
+  z-index: 1;
+  padding: 18px 18px 16px;
+}
+
+.ss-cardTag {
+  font-size: 11px;
+  letter-spacing: 4px;
+  opacity: 0.7;
+}
+
+.ss-cardTitle {
+  margin-top: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+}
+
+.ss-cardBody {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.72);
+}
+
+.ss-propsBottom {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.ss-propsNote {
+  font-style: italic;
+  color: rgba(255,255,255,0.62);
+}
+
+.ss-propsButtons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .ss-middleGrid {
+    grid-template-columns: 1fr;
+  }
+  .ss-middleCols {
+    grid-template-columns: 1fr;
+  }
+  .ss-cards {
+    grid-template-columns: 1fr;
+  }
+}

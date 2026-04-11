@@ -1,0 +1,50 @@
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+// Middleware to verify JWT token
+const authenticateToken = (req, res, next) => {
+  try {
+    // Get token from header
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+
+    if (!token) {
+      return res.status(401).json({ 
+        success: false, 
+        message: 'Access denied. No token provided.' 
+      });
+    }
+
+    // Verify token
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+      if (err) {
+        return res.status(403).json({ 
+          success: false, 
+          message: 'Invalid or expired token.' 
+        });
+      }
+
+      // Attach user info to request
+      req.user = user;
+      next();
+    });
+  } catch (error) {
+    return res.status(500).json({ 
+      success: false, 
+      message: 'Server error during authentication.' 
+    });
+  }
+};
+
+// Middleware to check if user is admin
+const isAdmin = (req, res, next) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ 
+      success: false, 
+      message: 'Access denied. Admin privileges required.' 
+    });
+  }
+  next();
+};
+
+module.exports = { authenticateToken, isAdmin };
