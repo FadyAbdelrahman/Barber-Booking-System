@@ -1,10 +1,14 @@
 # 💈 Barber Booking System — CA Assignment
 
 > **Module:** B8IT146 — Web and Cloud Application Development
+> 
 > **Institution:** Dublin Business School
+> 
 > **Assessment:** CA — Full-Stack Web Application
 > **Submission Date:** 12th April 2026
+> 
 > **Academic Year:** 2025/2026
+> 
 > **Lecturer:** Dr. Basel Magableh
 
 ---
